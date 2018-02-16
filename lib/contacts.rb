@@ -1,8 +1,6 @@
-#!/usr/bin/ruby
-
 class Contacts
   @@list = []
-  attr_accessor :first_name, :last_name, :job_title, :company, :contact_type, :address_list
+  attr_accessor :first_name, :last_name, :job_title, :company, :contact_type, :address_list, :id
 
   def initialize(attributes)
     @first_name = attributes.fetch(:first_name)
@@ -11,6 +9,7 @@ class Contacts
     @company = attributes.fetch(:company)
     @contact_type = attributes.fetch(:contact_type)
     @address_list = []
+
   end
 
   def add_address(address)
@@ -18,7 +17,9 @@ class Contacts
   end
 
   def save()
+    @id = @@list.length + 1
     @@list.push(self)
+
   end
 
   def self.all()
@@ -29,9 +30,9 @@ class Contacts
     @@list = []
   end
 
-  def self.find(first_name)
+  def self.find(id)
     @@list.each do |item|
-      if item.first_name == first_name
+      if item.id == id.to_i
         return item
       end
     end

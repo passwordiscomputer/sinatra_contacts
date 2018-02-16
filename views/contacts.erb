@@ -1,6 +1,6 @@
 <h1>Contact List </h1>
 <% @list.each do |contact| %>
-  <h4><a href="/contacts/<%= contact.first_name %>"><%= contact.first_name %></a></h4>
+  <h4><a href="/contacts/<%= contact.id %>"><%= contact.first_name %></a></h4>
 <% end %>
 
 <a href="/">Return to home</a>

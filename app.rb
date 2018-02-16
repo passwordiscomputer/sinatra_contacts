@@ -6,7 +6,8 @@ require('./lib/address')
 require('pry')
 
 get('/') do
-  @list = Contacts.all()
+  # @list = Contacts.all()
+
   erb(:home)
 end
 
@@ -16,20 +17,21 @@ post('/contacts') do
   contact.save
 
   @list = Contacts.all()
-  #binding.pry
+
   erb(:contacts)
 end
 
 get('/contacts/:first_name') do
   @contact = Contacts.find(params[:first_name])
+  binding.pry
   @address_list = @contact.address_list
-  #binding.pry
+
   erb(:contact_info)
 end
 
 post('/contacts/:first_name') do
   @contact = Contacts.find(params[:first_name])
-  #binding.pry
+
   address = Address.new(params)
   @contact.add_address(address)
   @address_list = @contact.address_list
