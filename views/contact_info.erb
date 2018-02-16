@@ -1,3 +1,15 @@
+<script>
+//ui logic
+$(document).ready(function()  {
+
+//when address Go! button is clicked
+ $("#add_button").click(function() {
+   $("#address_form").show();
+
+ });
+});
+</script>
+
 <h1><b>Name</b></h1>
 <h2><%="#{@contact.first_name} #{@contact.last_name}"%></h2>
 <h1><b>Job Title</b></h1>
@@ -15,30 +27,32 @@
   <p><%= address.city %>, <%= address.state %>  <%= address.zip %></p>
   <br>
 <% end %>
+<button id="add_button" class="btn-primary" type="button" name="button">Add Address?</button>
+<div id="address_form" style="display: none;">
 
-<h4>Add address information below:</h4>
-<form action="/contacts/<%= @contact.first_name %>" method="post">
-  <div class="form-group">
-    <label for="type">Address Type</label>
-    <input id="type" name="type" class="form-control" type="text">
-  </div>
-  <div class="form-group">
-    <label for="street">Street</label>
-    <input id="street" name="street" class="form-control" type="text">
-  </div>
-  <div class="form-group">
-    <label for="rank">City</label>
-    <input id="city" name="city" class="form-control" type="text">
-  </div>
-  <div class="form-group">
-    <label for="state">State</label>
-    <input id="state" name="state" class="form-control" type="text">
-  </div>
-  <div class="form-group">
-    <label for="zip">Zip Code</label>
-    <input id="zip" name="zip" class="form-control" type="text">
-  </div>
-  <button type="submit" class="btn btn-primary">Go!</button>
-</form>
-
+  <h4>Add address information below:</h4>
+  <form action="/contacts/<%= @contact.first_name %>" method="post">
+    <div class="form-group">
+      <label for="type">Address Type</label>
+      <input id="type" name="type" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+      <label for="street">Street</label>
+      <input id="street" name="street" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+      <label for="rank">City</label>
+      <input id="city" name="city" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <input id="state" name="state" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+      <label for="zip">Zip Code</label>
+      <input id="zip" name="zip" class="form-control" type="text">
+    </div>
+    <button type="submit" id="address-button" class="btn btn-primary">Go!</button>
+  </form>
+</div>
 <a href="/">Return to home</a>
